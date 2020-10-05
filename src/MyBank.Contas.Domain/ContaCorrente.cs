@@ -1,4 +1,5 @@
 ﻿using MyBank.Core.DomainObjects;
+using System;
 
 namespace MyBank.Contas.Domain
 {
@@ -20,7 +21,7 @@ namespace MyBank.Contas.Domain
         public void Sacar(decimal valor)
         {
             if (valor < 0) valor *= -1;
-            if (!PossuiSaldo(valor)) throw new DomainException("Saldo insuficiente");
+            if (!PossuiSaldo(valor)) throw new Exception("Saldo insuficiente");
             Saldo -= valor;
         }
 

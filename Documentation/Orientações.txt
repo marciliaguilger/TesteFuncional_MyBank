@@ -1,0 +1,40 @@
+1 - Subir docker-compose.yml no linux para subir a imagem do banco de dados (docker-compose up)
+2 - Executar as migrations abaixo
+  2.1 Add-Migration Initial -Context ContasContext
+  2.2 update-database -Context ContasContext
+3 - Executar Insert para teste: 
+  INSERT INTO dbMyBank.Contas (NumeroConta, Saldo) VALUES ('54321', 100)
+4 - Para Executar via graphQL:
+
+4.1 https://localhost:5001/graphql/
+{
+  sacar(conta:"54321", 10.0)
+  {numeroConta,saldo}
+}
+
+{
+  depositar(conta:"54321", 10.0)
+  {numeroConta,saldo}
+}
+{
+  saldo(conta:"54321")
+  {numeroConta,saldo}
+}
+
+5 - Para executar via PostMan
+
+5.1 https://localhost:5001/api/ContaCorrente/sacar
+{
+    "Conta":"54321",
+    "Valor":10
+}
+
+5.2 https://localhost:5001/api/ContaCorrente/depositar
+{
+    "Conta":"54321",
+    "Valor":10
+}
+5.3 https://localhost:5001/api/ContaCorrente/saldo
+{
+    "Conta":"54321"
+}

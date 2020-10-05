@@ -42,7 +42,7 @@ namespace MyBank.WebApp.Api.Controllers
             var result = await _documentExecuter
                 .ExecuteAsync(executionOptions);
 
-            if (result.Errors?.Count > 0) return BadRequest(result);
+            //if (result.Errors?.Count > 0) return BadRequest(result);
 
             return Ok(result);
         }
